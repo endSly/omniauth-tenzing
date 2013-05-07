@@ -3,7 +3,7 @@ require 'omniauth/strategies/tenzing'
 
 
 module Omniauth
-  module Linkedin
+  module Tenzing
     # Your code goes here...
   end
 end

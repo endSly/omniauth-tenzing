@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe "OmniAuth::Strategies::LinkedIn" do
+describe "OmniAuth::Strategies::tenzing" do
   subject do
-    OmniAuth::Strategies::LinkedIn.new(nil, @options || {})
+    OmniAuth::Strategies::Tenzing.new(nil, @options || {})
   end
 
   it 'should add a camelization for itself' do
-    OmniAuth::Utils.camelize('linkedin').should == 'LinkedIn'
+    OmniAuth::Utils.camelize('tenzing').should == 'tenzing'
   end
 
   context 'client options' do
-    it 'has correct LinkedIn site' do
-      subject.options.client_options.site.should eq('https://api.linkedin.com')
+    it 'has correct tenzing site' do
+      subject.options.client_options.site.should eq('https://api.tenzing.com')
     end
 
     it 'has correct request token path' do
@@ -23,7 +23,7 @@ describe "OmniAuth::Strategies::LinkedIn" do
     end
 
     it 'has correct authorize url' do
-      subject.options.client_options.authorize_url.should eq('https://www.linkedin.com/uas/oauth/authenticate')
+      subject.options.client_options.authorize_url.should eq('https://www.tenzing.com/uas/oauth/authenticate')
     end
   end
 
