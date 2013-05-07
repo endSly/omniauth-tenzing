@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in omniauth-linkedin.gemspec
+# Specify your gem's dependencies in omniauth-tenzing.gemspec
 gemspec
 
 group :development, :test do
