@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "omniauth-linkedin/version"
+require "omniauth-tenzing/version"
 
 Gem::Specification.new do |s|
   s.name        = "omniauth-tenzing"
