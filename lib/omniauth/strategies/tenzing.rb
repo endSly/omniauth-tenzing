@@ -1,8 +1,8 @@
-require 'omniauth/strategies/oauth'
+require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class Tenzing < OmniAuth::Strategies::OAuth
+    class Tenzing < OmniAuth::Strategies::OAuth2
       option :name, "tenzing"
 
       option :client_options, {
@@ -30,14 +30,9 @@ module OmniAuth
       end
 
       def request_phase
-        options.request_params ||= {}
-        options.request_params[:scope] = options.scope.gsub("+", " ")
         super
       end
 
-      def nil_if_empty(value)
-        (value.nil? || value.empty?) ? nil : value
-      end
     end
   end
 end
