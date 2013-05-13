@@ -1,13 +1,13 @@
 require 'bundler/setup'
 require 'sinatra/base'
-require 'omniauth-linkedin'
+require 'omniauth-tenzing'
 
-ENV['LINKEDIN_CONSUMER_KEY'] = "eumx4m8w39qb"
-ENV['LINKEDIN_CONSUMER_SECRET'] = "PczJNDDLYic6kQOL"
+ENV['TENZING_CONSUMER_KEY'] = "----"
+ENV['TENZING_CONSUMER_SECRET'] = "----"
 
 class App < Sinatra::Base
   get '/' do
-    redirect '/auth/linkedin'
+    redirect '/auth/tenzing'
   end
 
   get '/auth/:provider/callback' do
@@ -27,7 +27,7 @@ use OmniAuth::Builder do
   #note that the scope is different from the default
   #we also have to repeat the default fields in order to get
   #the extra 'connections' field in there
-  provider :linkedin, ENV['LINKEDIN_CONSUMER_KEY'], ENV['LINKEDIN_CONSUMER_SECRET'], :scope => 'r_fullprofile+r_emailaddress+r_network', :fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
+  provider :linkedin, ENV['TENZING_CONSUMER_KEY'], ENV['TENZING_CONSUMER_SECRET'], :scope => 'r_fullprofile+r_emailaddress+r_network', :fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
 end
 
 run App.new

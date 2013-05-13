@@ -1,8 +1,8 @@
-# OmniAuth LinkedIn
+# OmniAuth tenzing
 
-This gem contains the LinkedIn strategy for OmniAuth 1.0 .
+This gem contains the tenzing strategy for OmniAuth 1.0 .
 
-LinkedIn uses the OAuth 1.0a flow, you can read about it here: https://developer.linkedin.com/documents/authentication
+tenzing uses the OAuth 1.0a flow, you can read about it here: https://developer.tenzing.com/documents/authentication
 
 ## How To Use It
 
@@ -10,38 +10,38 @@ Usage is as per any other OmniAuth 1.0 strategy. So let's say you're using Rails
 
 ```ruby
 gem 'omniauth'
-gem 'omniauth-linkedin'
+gem 'omniauth-tenzing'
 ```
 
 Once these are in, you need to add the following to your `config/initializers/omniauth.rb`:
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :linkedin, "consumer_key", "consumer_secret"
+  provider :tenzing, "consumer_key", "consumer_secret"
 end
 ```
 
-You will obviously have to put in your key and secret, which you get when you register your app with LinkedIn (they call them API Key and Secret Key).
+You will obviously have to put in your key and secret, which you get when you register your app with tenzing (they call them API Key and Secret Key).
 
 Now just follow the README at: https://github.com/intridea/omniauth
 
 ## Additional permissions
 
-LinkedIn recently (August 2012) provided the ability to request different permissions by specifying a scope. You can find more information on the different permissions at https://developer.linkedin.com/documents/authentication
+tenzing recently (August 2012) provided the ability to request different permissions by specifying a scope. You can find more information on the different permissions at https://developer.tenzing.com/documents/authentication
 
-By default, omniauth-linkedin requests the following permissions:
+By default, omniauth-tenzing requests the following permissions:
 
 ```ruby
 "r_basicprofile r_emailaddress"
 ```
 
-This allows us to obtain enough information from LinkedIn to satisfy the requirements for the basic auth hash schema.
+This allows us to obtain enough information from tenzing to satisfy the requirements for the basic auth hash schema.
 
 To change the scope, simply change your initializer to something like this:
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :linkedin, "consumer_key", "consumer_secret", :scope => 'r_fullprofile r_emailaddress r_network'
+  provider :tenzing, "consumer_key", "consumer_secret", :scope => 'r_fullprofile r_emailaddress r_network'
 end
 ```
 
@@ -49,7 +49,7 @@ One thing to note is the fact that when you ask for extra permissions, you will 
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :linkedin, "consumer_key", "consumer_secret", :scope => 'r_fullprofile r_emailaddress r_network', :fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
+  provider :tenzing, "consumer_key", "consumer_secret", :scope => 'r_fullprofile r_emailaddress r_network', :fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
 end
 ```
 
@@ -61,25 +61,25 @@ The list of default fields is as follows:
 ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location"]
 ```
 
-To see a complete list of available fields, consult the LinkedIn documentation at https://developer.linkedin.com/documents/profile-fields
+To see a complete list of available fields, consult the tenzing documentation at https://developer.tenzing.com/documents/profile-fields
 
-## Using It With The LinkedIn Gem
+## Using It With The tenzing Gem
 
-You may find that you want to use OmniAuth for authentication, but you want to use an API wrapper such as this one https://github.com/pengwynn/linkedin to actually make your api calls. But the LinkedIn gem provides it's own way to authenticate with LinkedIn via OAuth. In this case you can do the following.
+You may find that you want to use OmniAuth for authentication, but you want to use an API wrapper such as this one https://github.com/pengwynn/tenzing to actually make your api calls. But the tenzing gem provides it's own way to authenticate with tenzing via OAuth. In this case you can do the following.
 
-Configure the LinkedIn gem with your consumer key and secret:
+Configure the tenzing gem with your consumer key and secret:
 
 ```ruby
-LinkedIn.configure do |config|
+tenzing.configure do |config|
   config.token = "consumer_key"
   config.secret = "consumer_secret"
 end
 ```
 
-Use OmniAuth as per normal to obtain an access token and an access token secret for your user. Now create the LinkedIn client and authorize it using the access token and secret that you ontained via OmniAuth:
+Use OmniAuth as per normal to obtain an access token and an access token secret for your user. Now create the tenzing client and authorize it using the access token and secret that you ontained via OmniAuth:
 
 ```ruby
-client = LinkedIn::Client.new
+client = tenzing::Client.new
 client.authorize_from_access("access_token", "access_token_secret")
 ```
 
