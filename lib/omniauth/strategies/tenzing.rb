@@ -7,32 +7,25 @@ module OmniAuth
 
       option :client_options, {
         :site => 'http://id.tenzing.urbegi.com',
-        :access_token_path => '/oauth/access_token',
-        :authorize_path => '/oauth/authorize'
       }
-
-      uid { raw_info['id'] }
+      uid{ raw_info['id'] }
 
       info do
         {
-          :email => raw_info['email'],
           :name => raw_info['name'],
-          :last_name => raw_info['last_name'],
+          :email => raw_info['email']
         }
       end
 
       extra do
-        { 'raw_info' => raw_info }
+        {
+          'raw_info' => raw_info
+        }
       end
 
       def raw_info
-        @raw_info ||= MultiJson.decode(access_token.get("/api/v1/user_info").body)
+        @raw_info ||= access_token.get('/me').parsed
       end
-
-      def request_phase
-        super
-      end
-
     end
   end
 end
