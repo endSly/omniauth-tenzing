@@ -11,13 +11,12 @@ module OmniAuth
         :authorize_url => '/oauth/authorize'
       }
 
-      uid { raw_info['id'] }
+      uid { raw_info['_id'] }
 
       info do
         {
           :email => raw_info['email'],
-          :name => raw_info['name'],
-          :last_name => raw_info['last_name'],
+          :name => raw_info['name']
         }
       end
 
