@@ -7,8 +7,8 @@ module OmniAuth
 
       option :client_options, {
         :site => 'http://id.tenzing.urbegi.com',
-        :access_token_url => 'http://id.tenzing.urbegi.com/oauth/access_token',
-        :authorize_path => '/oauth/authorize'
+        :token_url => '/oauth/access_token',
+        :authorize_url => '/oauth/authorize'
       }
 
       uid { raw_info['id'] }
